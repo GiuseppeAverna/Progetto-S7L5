@@ -1,6 +1,5 @@
 package Progetto.S7L5.entities;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 

@@ -1,8 +1,13 @@
 package Progetto.S7L5.entities;
-import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -28,5 +33,10 @@ public class Event {
     @Column(nullable = false)
     private int availableSeats;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "organizer_id", nullable = false)
+    private Organizer organizer;
 
+    @OneToMany(mappedBy = "event")
+    private Set<Booking> bookings = new HashSet<>();
 }
